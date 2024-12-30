@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head> 
+        <title>ImageAI</title>
+        <link rel="icon" type="image/x-icon" href="{%static 'img/icon2.png'%}">
+        <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width">
+        <script src="https://use.fontawesome.com/3a2eaf6206.js"></script>
+        <link rel="stylesheet" href="{%static 'css/home.css' %}" type="text/css">
+        <link rel="stylesheet" href="{%static 'css/position.css' %}" type="text/css">
+        <link rel="stylesheet" href="{%static 'css/style.css' %}" type="text/css">
+        <link rel="stylesheet" href="{%static 'css/new.css' %}" type="text/css">
+        <script src="{%static 'js/functions.js' %}"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- <script src="{%static 'js/new.js' %}"></script> -->
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+       
+    </head>
+    <body>
+        <div class="container">
+        
+            <header>
+                <div class="header">
+                    <a href="http://127.0.0.1:8000/web/">
+                    <img class="header_img" src="{%static 'img/icon2.png'%}" alt="logo" />
+                </a>
+                    <a href="http://127.0.0.1:8000/web/"><h1>ImageAI</h1></a>
+                  </div>
+            </header>
+            <!-- loading -->
+            <img id="loadId" class="loader" style="display:none;" src="{%static 'img/load.gif'%}" width=40 height=40>
+            <div class="body_content">
+                <div class="main_content">
+                    
+            <br>
+            
+            <!-- <center> -->
+                         <!-- image show -->
+                        <!-- <div class="galleryImage">
+                            <img class="maintain_ratio" id="image" src="" >
+                          </div></center>
+                    <br>
+                    <center><div>
+                        <center>
+                            <label for="fileId">
+                                <i class="fa fa-upload" style="font-size:60px"></i>
+                            <input type="file" name="" id="fileId" onchange="imageUploaded()" accept="image/*" /> -->
+                            <!-- <h1 >First Tap here!</h1> -->
+                        <!-- </label><br>
+                            <button class="btn2"  onclick="uploadApi()" value="hello">Upload</button>
+                                 
+                        </center>
+                                
+                    </div></center>  -->
+                    <!-- <button class="btn2" onclick="change_image()"><i class="fa fa-download"></i> Change</button> -->
+                    <center><div class="drag-area">
+                        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                        <h1>Drag & Drop Image</h1>
+                        <br>
+                        <h5>OR</h5> <br>
+                        <button class="btn2">Browse File</button>
+                        <input type="file" hidden>
+                      </div></center>
+                      <center>
+                        <br>
+                        <button class="btn2" onclick="download()"><i class="fa fa-download"></i> Download</button>
+                        <button class="btn2" onclick="change_image()">Change Image</button>
+                        
+                      </center>
+            </div>
+            <div class="scroller">
+                <div class="grid-section">
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/background_remove.jpg'%}" alt="Snow">
+                                <div class="overly">
+                                <button class="btn" onclick="bgRemove()" type="submit">USe</button>
+                                </div>
+                            </div>
+                            <h2> Background remover</h2>
+                        </div>
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/background_blur.jpg'%}" alt="Snow">
+                            <div class="overly">
+                            <button class="btn" onclick="bgBlur()" type="submit">USe</button>   
+                            </div>
+                        </div>
+                        <h2> Background Blur</h2>
+                        </div>
+    
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/face_focused.png'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="facefocused()" type="submit">USe</button>
+                            </div>
+                            </div>
+                            <h2>Face Focused</h2>
+                        </div>
+    
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/beautification.jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="beautification()" type="submit">USe</button>
+                            </div>
+                            </div>
+                            <h2>Beautify</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/variant.jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="variant()" type="submit">USe</button>     
+                            </div>
+                            </div>
+                            <h2>multiverse variant</h2>
+                        </div>
+    
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/img (7).jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <div class="zoom">
+                                <label for="bgId">
+                               <i class="fa fa-plus" style="font-size:25px;color:rgb(34, 25, 54);"></i>
+                                <input type="file" name="" id="bgId" onchange="bgUploaded()" accept="image/*"/>`
+                            </label>
+                        </div>
+                        
+                                <button class="btn" onclick="custombg()" type="submit">USe</button>
+                            </div>
+                            </div>
+                            <h2>Custom Background</h2>
+                        </div>
+    
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/red.jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="bgchange('red.jpg')" type="submit">USe</button>
+                            </div>    
+                            </div>
+                            <h2>Background Red</h2>
+                        </div>
+        
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/blue.jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="bgchange('blue.jpg')" type="submit">USe</button>
+                            </div>
+                            </div>
+                            <h2>Background Blue</h2>
+                        </div>
+        
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/green.jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="bgchange('green.jpg')" type="submit">USe</button>
+                            </div>
+                            </div>
+                            <h2>Background Green</h2>
+                        </div>
+    
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/white.jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="bgchange('white.jpg')" type="submit">USe</button>
+                            </div>  
+                            </div>
+                            <h2>Background white</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/bgb1.jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="bgchange('bgb1.jpg')" type="submit">USe</button>
+                            </div>  
+                            </div>
+                            <h2>Bokeh 1 </h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/bgb2.jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="bgchange('bgb2.jpg')" type="submit">USe</button>
+                            </div>  
+                            </div>
+                            <h2>Bokeh 2</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/bgb3.jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="bgchange('bgb3.jpg')" type="submit">USe</button>
+                            </div>  
+                            </div>
+                            <h2>Bokeh 3 </h2>
+                        </div>
+
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/bgb4.jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="bgchange('bgb4.jpg')" type="submit">USe</button>
+                            </div>  
+                            </div>
+                            <h2>Bokeh 4</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/bgb5.jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="bgchange('bgb5.jpg')" type="submit">USe</button>
+                            </div>  
+                            </div>
+                            <h2>Bokeh 5 </h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/bgb6.jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="bgchange('bgb6.jpg')" type="submit">USe</button>
+                            </div>  
+                            </div>
+                            <h2>Bokeh 6</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/img (8).jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <div class="zoom">
+                                    <label for="filterId">
+                                    <i class="fa fa-plus" style="font-size:25px;color:rgb(34, 25, 54);"></i>
+                                    <input type="file" name="" id="filterId" onchange="filterUploaded()" accept="image/*" />
+                                    </label>
+                        </div>
+                                <button class="btn" onclick="customfilter()" type="submit">USe</button>
+                            </div>
+                            </div>
+                            <h2>Custom Filter</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/overlapped.jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="overlappedfilter()" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>Overlapped Filter</h2>
+                        </div>
+    
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/filter_1.jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="filter('filter1.jpg')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>Tokyo</h2>
+                        </div>
+    
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/filter_2.jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="filter('filter2.jpg')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>Composition</h2>
+                        </div>
+    
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/filter_3.jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="filter('filter3.jpg')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>Illegal Beauty</h2>
+                        </div>
+    
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/filter_4.jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="filter('filter4.jpg')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>Paper Art</h2>
+                        </div>
+    
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/filter_5.jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="filter('filter5.jpg')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>Impression</h2>
+                        </div>
+    
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/filter_6.jpg'%}" alt="Snow">                        
+                            <div class="overly">
+                                <button class="btn" onclick="filter('filter6.jpg')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>Mononoke</h2>
+                        </div>
+    
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/filter_7.jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="filter('filter7.jpg')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>Mosaic</h2>
+                        </div>
+    
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/filter_8.jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="filter('filter8.jpg')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>Udnie</h2>
+                        </div>
+    
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/filter_9.jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="filter('filter9.jpg')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>Light Summer Reading</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/filter_10.jpg'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="filter('filter10.jpg')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>Transverse Line</h2>
+                        </div>
+
+                        <!-- end of filters -->
+
+                        <!-- start of GIF ----------------------------------------------------------------------------->
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/gif1.gif'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="make_gif('gif1.gif')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>make GIF</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/gif2.gif'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="make_gif('gif2.gif')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>make GIF</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/gif3.gif'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="make_gif('gif3.gif')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>make GIF</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/gif4.gif'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="make_gif('gif4.gif')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>make GIF</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/gif5.gif'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="make_gif('gif5.gif')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>make GIF</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/gif6.gif'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="make_gif('gif6.gif')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>make GIF</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/gif7.gif'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="make_gif('gif7.gif')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>make GIF</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/gif8.gif'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="make_gif('gif8.gif')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>make GIF</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/gif9.gif'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="make_gif('gif9.gif')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>make GIF</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/gif10.gif'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="make_gif('gif10.gif')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>make GIF</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/gif11.gif'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="make_gif('gif11.gif')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>make GIF</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/gif12.gif'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="make_gif('gif12.gif')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>make GIF</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/gif13.gif'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="make_gif('gif13.gif')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>make GIF</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/gif14.gif'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="make_gif('gif14.gif')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>make GIF</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/gif15.gif'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="make_gif('gif15.gif')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>make GIF</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/gif16.gif'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="make_gif('gif16.gif')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>make GIF</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/gif17.gif'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="make_gif('gif17.gif')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>make GIF</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/gif18.gif'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="make_gif('gif18.gif')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>make GIF</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/gif19.gif'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="make_gif('gif19.gif')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>make GIF</h2>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/gif20.gif'%}" alt="Snow">
+                            <div class="overly">
+                                <button class="btn" onclick="make_gif('gif20.gif')" type="submit">USe</button>      
+                            </div>
+                            </div>
+                            <h2>make GIF</h2>
+                        </div>
+
+
+                        <!-- <div class="grid">
+                            <div class="grid-img">
+                                <img src="{%static 'img/custom.gif'%}" alt="Snow">
+                            <div class="overly">
+                                <div class="zoom">
+                                <label for="gifId">
+                               <i class="fa fa-plus" style="font-size:25px;color:rgb(34, 25, 54);"></i>
+                                <input type="file" name="" id="gifId" onchange="gifUploaded()" accept="image/*"/>`
+                            </label>
+                        </div>
+                        
+                                <button class="btn" onclick="custom_gif()" type="submit">USe</button>
+                            </div>
+                            </div>
+                            <h2>Custom Background</h2>
+                        </div> -->
+
+        
+
+    
+                    </div>
+            </div> <!-- end of scroller-->
+    
+          
+         
+    
+                </div> <!-- end of body content-->
+    
+            </div>
+
+            
+                
+         <!-- Script and fucntions -->
+            <script src="{%static 'js/new.js' %}"></script>
+        </body>
+        
+    </html>
+    

@@ -1,0 +1,34 @@
+# Use an official Python runtime as a parent image
+FROM python:3.8-slim
+
+# Set environment variables to avoid prompts during installations
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install the required packages and dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
+
+# Download and install TA-Lib from source
+RUN wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz && \
+    tar -xzf ta-lib-0.4.0-src.tar.gz && \
+    cd ta-lib/ && \
+    ./configure --prefix=/usr && \
+    make && \
+    make install && \
+    cd .. && \
+    rm -rf ta-lib ta-lib-0.4.0-src.tar.gz
+
+# Install the Python wrapper for TA-Lib
+RUN pip install TA-Lib
+
+# Set the working directory
+WORKDIR /app
+
+COPY requirements.txt /app/
+# Install any remaining Python dependencies
+RUN pip install -r requirements.txt
+
+# Copy your application code to the container
+COPY . /app

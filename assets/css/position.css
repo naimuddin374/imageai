@@ -1,0 +1,29 @@
+.split {
+    height: 100%;
+    width: 40%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  .right {
+    right: 0;
+    background-color: rgb(247, 247, 247);
+  }
+  
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .lefted {
+    position: absolute;
+    top: 20%;
+    left: 60%;
+    transform: translate(-90%, -5%);
+    text-align: center;
+  }

@@ -1,0 +1,62 @@
+# # FROM python:3.8-slim
+
+# # # Install necessary build tools and ta-lib
+# # RUN apt-get update && apt-get install -y gcc build-essential 
+# #     # libta-lib0 \
+# #     # libta-lib0-dev \
+# #     # && apt-get clean \
+# #     # && rm -rf /var/lib/apt/lists/*
+# # RUN pip install TA-Lib --only-binary=all
+# # # Set the working directory
+# # WORKDIR /app
+
+# # # Copy the requirements file
+# # COPY requirements.txt .
+
+# # # Install Python dependencies
+# # RUN pip install --no-cache-dir -r requirements.txt
+
+# # # Copy the rest of your application code
+# # COPY . .
+
+# # # Set the command to run your application
+# # CMD ["python", "app.py"]
+
+
+# ####################################################################
+# # Use an official Python runtime as a parent image
+# FROM python:3.8-slim
+
+# # Set environment variables to avoid prompts during installations
+# ENV DEBIAN_FRONTEND=noninteractive
+
+# # Install the required packages and dependencies
+# RUN apt-get update && apt-get install -y \
+#     build-essential \
+#     wget \
+#     && rm -rf /var/lib/apt/lists/*
+
+# # Download and install TA-Lib from source
+# RUN wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz && \
+#     tar -xzf ta-lib-0.4.0-src.tar.gz && \
+#     cd ta-lib/ && \
+#     ./configure --prefix=/usr && \
+#     make && \
+#     make install && \
+#     cd .. && \
+#     rm -rf ta-lib ta-lib-0.4.0-src.tar.gz
+
+# # Install the Python wrapper for TA-Lib
+# RUN pip install TA-Lib
+
+# # Copy your application code to the container
+# COPY . /app
+
+# # Set the working directory
+# WORKDIR /app
+
+# # Install any remaining Python dependencies
+# RUN pip install -r requirements.txt
+
+# # Command to run your application
+# CMD ["python", "your_script.py"]

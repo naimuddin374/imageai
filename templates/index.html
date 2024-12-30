@@ -1,0 +1,106 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Sentra HTML CSS Template</title>
+        
+<!-- 
+
+Sentra Template
+<link rel="stylesheet" type="text/css" href="{%static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+http://www.templatemo.com/tm-518-sentra
+
+-->
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            
+        <link rel="stylesheet" href="{%static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{%static 'css/bootstrap-theme.min.css' %}">
+        <link rel="stylesheet" href="{%static 'css/fontAwesome.css' %}">
+        <link rel="stylesheet" href="{%static 'css/light-box.css' %}">
+        <link rel="stylesheet" href="{%static 'css/owl-carousel.css' %}">
+        <link rel="stylesheet" href="{%static 'css/templatemo-style.css' %}">
+        <link rel="stylesheet" href="{%static 'css/templatemo-style.css' %}">
+        <link rel="stylesheet" href="{%static 'css/hover.css' %}">
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+        <script src="{% static 'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
+  
+    </head>
+
+<body>
+        <div class="sidebar-navigation hidde-sm hidden-xs">
+            <div class="logo">
+                <a href="#"><em>Image</em>AI</a>
+            </div>
+            <nav>
+                <div class="container">
+                    <img src="{%static 'img/img_snow.jpg'%}" alt="Snow">
+                    <form action="{% url 'bg_rmv' %}" method="POST">
+                        {% csrf_token%}
+                        <button class="btn" type="submit">USe</button>
+                    </form>
+                  </div>
+                  <div class="container">
+                    <img src="{%static 'img/img_snow.jpg'%}" alt="Snow">
+                    <button class="btn">Use</button>
+                  </div>
+                  <div class="container">
+                    <img src="{%static 'img/img_snow.jpg'%}" alt="Snow">
+                    <button class="btn">Use</button>
+                  </div>
+            </nav>
+            <ul class="social-icons">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+            </ul>
+        </div>
+
+        <div class="slider">
+            <div class="Modern-Slider content-section" id="top">
+                <!-- Item -->
+                <div class="item item-1">
+                    <div class="img-fill">
+                    <div class="image"></div>
+                    <div class="info">
+                        <div class="info">
+                          <h1 style="color:rgb(0, 0, 0)">ImageAI</h1><br><h5>Upload your Image here</h5>
+                          <div class="white-button button">
+                            <!-- write upload code here -->
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                    <input type="file" name="upload" accept="image/*">
+                                    <br>
+                                    <button class="btn btn-dark my-4" type="submit">Submit</button>
+
+                              <!-- <a href="#featured" type="file" id="myFile" name="filename">Upload Image</a> -->
+                            </form>
+                              <!-- image show -->
+                            {% if file_url %}
+                            <div class="col-lg-4 col-md-6 col-sm-12 pb-4">
+                            <!-- <img src="{{ file_url }}" class="img-fluid"> -->
+                            <img src="{{ file_url }}" alt="an artist's rendition of a black hole in space" style="width:400px;height:200px;">
+                            <br>
+                            <a class="btn btn-dark my-4" href="/web">Return to Homepage</a>
+                            {% else %}
+                            <p>No Image Uploaded</p>
+                            {% endif %}
+                        
+                          </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+            <section class="footer">
+                <p>Copyright &copy; 2018. Design: <a href="http://templatemo.com/tm-518-sentra" target="_blank">Sentra</a> | Distribution: <a href="https://themewagon.com" target="_blank">ThemeWagon</a></p>
+            </section>
+        </div>
+</body>
+</html>

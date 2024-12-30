@@ -1,0 +1,27 @@
+
+  
+  .button-container-div {
+    width: 50px;
+    height: 100px;
+    border: 1px solid #181616;
+    
+    justify-content: center;
+    align-items: center;
+}
+
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}

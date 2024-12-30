@@ -1,0 +1,150 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>ImageAI</title>
+        <link rel="stylesheet" href="{%static 'css/index.css' %}">
+        <link rel="stylesheet" href="{%static 'css/position.css' %}">
+        <link rel="stylesheet" href="{%static 'css/style.css' %}">
+    </head>
+    <body>
+        
+        <header>
+            <div class="navbar"></div>
+                <h1>ImageAI</h1>
+            </div>
+        </header>
+        <div class="lefted">
+        <!--Button-->
+        <form method="post" enctype="multipart/form-data" align="center">
+            {% csrf_token %}
+            <div class="upload-btn-wrapper">
+                <button class="button"> Change Image</button><input type="file" name="change" /> 
+                
+                
+              </div>
+
+          <!-- <a href="#featured" type="file" id="myFile" name="filename">Upload Image</a> -->
+        </form>
+        
+
+            <!-- write upload code here -->
+        </div> 
+        
+        <div class="scroller">
+            <div class="grid-section"s>
+                    <div class="grid">
+                        <div class="grid-img">
+                            <img src="{%static 'img/img (1).jpg'%}" alt="Snow">
+                        </div>
+                        <div class="overly">
+                            <h2>Background remove</h2> 
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="grid-img">
+                            <img src="{%static 'img/img (2).jpg'%}" alt="Snow">
+                        </div>
+                        <div class="overly">
+                            <h2>Background Change</h2>
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <button class="btn">Use</button>
+                            </form> 
+                            
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="grid-img">
+                            <img src="{%static 'img/img (3).jpg'%}" alt="Snow">
+                        </div>
+                        <div class="overly">
+                            <h2>Filter 1</h2> 
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <button class="btn">Use</button>
+                            </form>
+                        </div>
+                    </div>
+    
+                    <div class="grid">
+                        <div class="grid-img">
+                            <img src="{%static 'img/img (4).jpg'%}" alt="Snow">
+                        </div>
+                        <div class="overly">
+                            <h2>Filter 2</h2> 
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <button class="btn">Use</button>
+                            </form>
+                        </div>
+                    </div>
+    
+                    <div class="grid">
+                        <div class="grid-img">
+                            <img src="{%static 'img/img (5).jpg'%}" alt="Snow">
+                        </div>
+                        <div class="overly">
+                            <h2>Background remover</h2> 
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <button class="btn">Use</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="grid-img">
+                            <img src="{%static 'img/img (6).jpg'%}" alt="Snow">
+                        </div>
+                        <div class="overly">
+                            <h2>Background remover</h2> 
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <button class="btn">Use</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="grid-img">
+                            <img src="{%static 'img/img (7).jpg'%}" alt="Snow">
+                        </div>
+                        <div class="overly">
+                            <h2>Background remover</h2> 
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <button class="btn">Use</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="grid-img">
+                            <img src="{%static 'img/img (8).jpg'%}" alt="Snow">
+                        </div>
+                        <div class="overly">
+                            <h2>Background remover</h2> 
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <button class="btn">Use</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="grid-img">
+                            <img src="{%static 'img/img (9).jpg'%}" alt="Snow">
+                        </div>
+                        <div class="overly">
+                            <h2>Background remover</h2> 
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <button class="btn">Use</button>
+                            </form>
+                        </div>
+                    </div>
+
+               
+                </div>
+        </div>
+        
+    </body>
+</html>
